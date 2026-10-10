@@ -1,0 +1,165 @@
+/* ========================================================= */
+/* 8-BALL LUXURY POOL BILLIARDS - MOBILE & PC READY          */
+/* ========================================================= */
+
+.pool-arena-wrapper {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.pool-hud {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-surface-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 10px 18px;
+}
+
+.pool-player {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0.6;
+    transition: var(--transition-snappy);
+}
+
+.pool-player.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.pool-player .p-header {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-pure);
+}
+
+.pool-player .p-suit {
+    font-size: 0.72rem;
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
+.pool-player .p-balls-left {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    color: var(--gold-primary);
+}
+
+.pool-center-info {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--neon-yellow);
+    background: rgba(248, 216, 0, 0.1);
+    border: 1px solid rgba(248, 216, 0, 0.3);
+    padding: 5px 14px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.pool-canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background: #021a10;
+    border-radius: 24px;
+    border: 6px solid #1a120b;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 245, 160, 0.2);
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+#pool-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 20/11;
+    cursor: crosshair;
+    touch-action: manipulation;
+}
+
+/* Pool Bottom Controls */
+.pool-controls-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--bg-surface-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 12px 18px;
+}
+
+.aim-angle-guide {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.pool-shot-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.power-txt {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--neon-cyan);
+    white-space: nowrap;
+}
+
+.pool-shot-slider-wrap input[type="range"] {
+    flex-grow: 1;
+    accent-color: var(--neon-green);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.btn-pool-shoot {
+    background: linear-gradient(135deg, var(--neon-green), #00c9ff);
+    border: none;
+    color: #000;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 245, 160, 0.4);
+    transition: var(--transition-snappy);
+    white-space: nowrap;
+    touch-action: manipulation;
+}
+
+.btn-pool-shoot:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(0, 245, 160, 0.7);
+}
+
+@media (max-width: 600px) {
+    .pool-hud {
+        padding: 8px 10px;
+    }
+    .pool-center-info {
+        display: none;
+    }
+    .pool-shot-slider-wrap {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-pool-shoot {
+        width: 100%;
+    }
+}

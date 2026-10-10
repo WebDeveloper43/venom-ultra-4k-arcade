@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#070913">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230e1224'/><text x='50' y='65' font-size='50' text-anchor='middle'>⚡</text></svg>">
+
+    <title>VENOM ULTRA 4K GAMING ARCADE | 8-in-1 Mobile & PC Game Hub</title>
+    <meta name="description"
+        content="Ultimate 4K Gaming Arcade featuring Cyber Subway Surfers, Car Racing, Fruit Ninja, Tic Tac Toe, Carrom Board, 8-Ball Pool, 3D Ludo Championship, and Grandmaster Chess.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/hub.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/car-game.css">
+    <link rel="stylesheet" href="styles/tictactoe.css">
+    <link rel="stylesheet" href="styles/carrom.css">
+    <link rel="stylesheet" href="styles/pool.css">
+    <link rel="stylesheet" href="styles/ludo.css">
+    <link rel="stylesheet" href="styles/chess.css">
+    <link rel="stylesheet" href="styles/fruit-ninja.css">
+    <link rel="stylesheet" href="styles/subway.css">
+</head>
+
+<body class="ultra-4k-theme">
+    <!-- Particle Canvas Background -->
+    <canvas id="bg-particles-canvas"></canvas>
+
+    <!-- Global App Shell Header -->
+    <header id="arcade-header">
+        <div class="header-container">
+            <div class="brand-logo" id="btn-home-logo">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">
+                    <span class="brand-title">VENOM</span>
+                    <span class="brand-subtitle">ULTRA 4K ARCADE</span>
+                </div>
+            </div>
+
+            <div class="player-profile-hud" id="profile-trigger">
+                <div class="avatar-ring" id="hud-avatar">🏎️</div>
+                <div class="player-stats">
+                    <div class="player-name" id="hud-player-name">Player One</div>
+                    <div class="player-lvl-coin">
+                        <span class="badge-lvl" id="hud-player-lvl">LVL 1</span>
+                        <span class="badge-coins"><span class="coin-icon">🪙</span> <span
+                                id="hud-player-coins">1,500</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button class="btn-icon btn-install-app" id="btn-pwa-install" title="Install App on Phone / PC">
+                    <span class="icon">📲</span>
+                </button>
+                <button class="btn-icon" id="btn-bgm-toggle" title="Toggle Background Music">
+                    <span class="icon">🎵</span>
+                </button>
+                <button class="btn-icon" id="btn-sfx-toggle" title="Toggle Sound FX">
+                    <span class="icon">🔊</span>
+                </button>
+                <button class="btn-icon" id="btn-fullscreen-toggle" title="Fullscreen Mode">
+                    <span class="icon">⛶</span>
+                </button>
+                <button class="btn-icon" id="btn-settings-open" title="Arcade Settings">
+                    <span class="icon">⚙️</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="app-viewport">
+        <!-- ======================================================== -->
+        <!-- VIEW 1: ARCADE GAME SELECTION HUB                        -->
+        <!-- ======================================================== -->
+        <section id="view-hub" class="active-view">
+            <div class="hub-hero">
+                <div class="hero-tag">🌟 ULTRA 4K 8-IN-1 GAMING ARCADE</div>
+                <h1 class="hero-title">CHOOSE YOUR <span class="neon-gradient-text">BATTLEGROUND</span></h1>
+                <p class="hero-desc">Play 8 elite games vs Smart AI (Easy, Normal, Hard), Local Friends (Pass & Play),
+                    or Live Online Players.</p>
+                <div class="mobile-playstore-pill">
+                    <span>📱 100% Mobile & Touchscreen Ready | 💻 PC Keyboard & Mouse Support</span>
+                </div>
+            </div>
+
+            <div class="games-grid-container">
+
+                <!-- Game 0: Cyber Subway Surfers -->
+                <div class="game-card" data-game="subway" id="card-game-subway">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">ENDLESS 🛹</div>
+                    <div class="card-banner" style="background: linear-gradient(135deg, #0a1a2e 0%, #0d0d2b 100%);">
+                        <div class="banner-visual">
+                            <div class="neon-subway-icon" style="font-size:3rem; animation: float 2s ease-in-out infinite;">🛹🚂💨</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">Cyber Subway Surfers</h3>
+                            <span class="rating">⭐ 5.0</span>
+                        </div>
+                        <p class="game-summary">3-Lane 3D Endless Runner! Jump, Slide, Dodge Trains, collect Coins. Hoverboard & Jetpack powerups!</p>
+                        <div class="card-tags">
+                            <span class="tag">3D Endless</span>
+                            <span class="tag">Swipe/Arrow Keys</span>
+                            <span class="tag">Powerups</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="subway">
+                            <span>START RUNNING</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 1: Car Racing -->
+                <div class="game-card" data-game="car" id="card-game-car">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">HOT 🏎️</div>
+                    <div class="card-banner car-banner">
+                        <div class="banner-visual">
+                            <div class="neon-car-icon">🏎️💨</div>
+                            <div class="speed-lines"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">Cyber Nitro Racing</h3>
+                            <span class="rating">⭐ 4.9</span>
+                        </div>
+                        <p class="game-summary">3D High-speed highway nitro racing. Touch controls for phone, arrow keys
+                            for PC.</p>
+                        <div class="card-tags">
+                            <span class="tag">3D Canvas</span>
+                            <span class="tag">Touch Steering</span>
+                            <span class="tag">Nitro Boost</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="car">
+                            <span>LAUNCH RACE</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 2: Tic Tac Toe -->
+                <div class="game-card" data-game="tictactoe" id="card-game-tictactoe">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">NEON ⭕❌</div>
+                    <div class="card-banner ttt-banner">
+                        <div class="banner-visual">
+                            <div class="neon-ttt-icon">⚡⭕❌</div>
+                            <div class="holo-grid"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">Neon Tic Tac Toe</h3>
+                            <span class="rating">⭐ 4.8</span>
+                        </div>
+                        <p class="game-summary">Holographic 3x3, 4x4, & 5x5 Cyberpunk duel. Master the unbeatable
+                            Minimax AI.</p>
+                        <div class="card-tags">
+                            <span class="tag">Minimax AI</span>
+                            <span class="tag">3x3 / 4x4 / 5x5</span>
+                            <span class="tag">Mobile Tap</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="tictactoe">
+                            <span>START DUEL</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 3: Carrom Board -->
+                <div class="game-card" data-game="carrom" id="card-game-carrom">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">PHYSICS 🔴</div>
+                    <div class="card-banner carrom-banner">
+                        <div class="banner-visual">
+                            <div class="neon-carrom-icon">🎯⚪🔴</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">Carrom Board Master</h3>
+                            <span class="rating">⭐ 5.0</span>
+                        </div>
+                        <p class="game-summary">Realistic 2D physics simulation with touch trajectory aiming, power
+                            gauge & Queen cover rules.</p>
+                        <div class="card-tags">
+                            <span class="tag">Real Physics</span>
+                            <span class="tag">Trajectory Line</span>
+                            <span class="tag">Touch Slider</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="carrom">
+                            <span>STRIKE BOARD</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 4: 8-Ball Pool -->
+                <div class="game-card" data-game="pool" id="card-game-pool">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">PRO 🎱</div>
+                    <div class="card-banner pool-banner">
+                        <div class="banner-visual">
+                            <div class="neon-pool-icon">🎱✨</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">8-Ball Luxury Pool</h3>
+                            <span class="rating">⭐ 4.9</span>
+                        </div>
+                        <p class="game-summary">Full 16-ball billiards with 360° touch cue controls, ghost ball
+                            projection & cushion banking.</p>
+                        <div class="card-tags">
+                            <span class="tag">Ghost Ball Aim</span>
+                            <span class="tag">Power Meter</span>
+                            <span class="tag">Solids & Stripes</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="pool">
+                            <span>POT BALLS</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 5: Ludo Championship with Realistic 3D Dot Dice -->
+                <div class="game-card" data-game="ludo" id="card-game-ludo">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">3D DICE 🎲</div>
+                    <div class="card-banner ludo-banner">
+                        <div class="banner-visual">
+                            <div class="neon-ludo-icon">🎲👑</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">Royal Ludo 3D</h3>
+                            <span class="rating">⭐ 5.0</span>
+                        </div>
+                        <p class="game-summary">4-Player Ludo with realistic 3D dice having real Pip Dots (1 to 6), safe
+                            stars & token captures.</p>
+                        <div class="card-tags">
+                            <span class="tag">3D Dot Dice</span>
+                            <span class="tag">2-4 Players</span>
+                            <span class="tag">Smart AI</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="ludo">
+                            <span>ROLL DICE</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 6: Chess Grandmaster -->
+                <div class="game-card" data-game="chess" id="card-game-chess">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">MASTER ♟️</div>
+                    <div class="card-banner chess-banner">
+                        <div class="banner-visual">
+                            <div class="neon-chess-icon">♟️👑</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">Grandmaster Chess</h3>
+                            <span class="rating">⭐ 5.0</span>
+                        </div>
+                        <p class="game-summary">Full FIDE Chess with Castling, En Passant, Promotion, Move Log, and
+                            multi-depth AI Engine.</p>
+                        <div class="card-tags">
+                            <span class="tag">FIDE Rules</span>
+                            <span class="tag">Touch Tap/Move</span>
+                            <span class="tag">AI Engine</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="chess">
+                            <span>PLAY CHESS</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game 7: Cyber Fruit Ninja -->
+                <div class="game-card" data-game="fruitninja" id="card-game-fruitninja">
+                    <div class="card-glow-border"></div>
+                    <div class="card-badge">SLASH 🍉</div>
+                    <div class="card-banner" style="background: linear-gradient(135deg, #2b110a 0%, #150906 100%);">
+                        <div class="banner-visual">
+                            <div class="neon-ninja-icon">🍉⚔️💣</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header-row">
+                            <h3 class="game-title">Cyber Fruit Ninja</h3>
+                            <span class="rating">⭐ 5.0</span>
+                        </div>
+                        <p class="game-summary">Slash flying watermelons, bananas & pineapples with glowing laser
+                            katana! Avoid bombs & trigger combos.</p>
+                        <div class="card-tags">
+                            <span class="tag">Blade Trails</span>
+                            <span class="tag">Juicy Splatters</span>
+                            <span class="tag">Combos & Slow-Mo</span>
+                        </div>
+                        <button class="btn-play-action" data-game-launch="fruitninja">
+                            <span>SLICE FRUITS</span> <span class="arrow">▶</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- VIEW 2: GAME VIEWPORT (CONTAINER FOR ACTIVE GAME)        -->
+        <!-- ======================================================== -->
+        <section id="view-game-arena" class="game-viewport-container">
+            <!-- Active Game Top Bar -->
+            <div class="arena-topbar">
+                <button class="btn-back-hub" id="btn-exit-game">
+                    <span>◀</span> <span>ARCADE HUB</span>
+                </button>
+                <div class="arena-game-meta">
+                    <span class="active-game-badge" id="arena-badge">GAME</span>
+                    <h2 class="active-game-title" id="arena-title">Game Title</h2>
+                    <span class="active-mode-pill" id="arena-mode-pill">🤖 VS COMPUTER (NORMAL)</span>
+                </div>
+                <div class="arena-controls">
+                    <button class="btn-arena-ctrl" id="btn-restart-game" title="Restart Game">🔄 Reset</button>
+                    <button class="btn-arena-ctrl" id="btn-pause-game" title="Pause Game">⏸️ Pause</button>
+                </div>
+            </div>
+
+            <!-- Game 0: Subway Surfers Container -->
+            <div class="game-subview" id="game-subway-container">
+                <div class="subway-arena-wrapper" style="position:relative; width:100%; height:100%; background:#0a0a1e;">
+                    <canvas id="subway-canvas" width="800" height="500" style="width:100%; height:100%; display:block;"></canvas>
+                    <div class="subway-hud-overlay" style="position:absolute; top:0; left:0; right:0; display:flex; justify-content:space-between; padding:15px 20px; pointer-events:none; z-index:10;">
+                        <div style="background:rgba(0,0,0,0.7); border:1px solid #00f2fe; border-radius:10px; padding:8px 18px; color:#00f2fe; font-family:'Orbitron',sans-serif; font-size:0.85rem;">
+                            <div style="font-size:0.65rem; opacity:0.7;">SCORE</div>
+                            <div id="subway-score-val" style="font-size:1.4rem; font-weight:800;">0</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.7); border:1px solid #f7c59f; border-radius:10px; padding:8px 18px; color:#f7c59f; font-family:'Orbitron',sans-serif; font-size:0.85rem; text-align:center;">
+                            <div style="font-size:0.65rem; opacity:0.7;">DISTANCE</div>
+                            <div id="subway-dist-val" style="font-size:1.1rem; font-weight:700;">0m</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.7); border:1px solid #a855f7; border-radius:10px; padding:8px 18px; color:#a855f7; font-family:'Orbitron',sans-serif; font-size:0.85rem; text-align:center;">
+                            <div style="font-size:0.65rem; opacity:0.7;">COINS</div>
+                            <div id="subway-coins-val" style="font-size:1.1rem; font-weight:700;">🪙 0</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.7); border:1px solid #ff6b6b; border-radius:10px; padding:8px 18px; color:#ff6b6b; font-family:'Orbitron',sans-serif; font-size:0.85rem; text-align:center;">
+                            <div style="font-size:0.65rem; opacity:0.7;">LIVES</div>
+                            <div id="subway-lives-val" style="font-size:1.1rem; font-weight:700;">❤️❤️❤️</div>
+                        </div>
+                    </div>
+                    <!-- Mobile Touch Controls -->
+                    <div id="subway-touch-ctrls" style="position:absolute; bottom:15px; left:0; right:0; display:flex; justify-content:center; gap:15px; z-index:10; pointer-events:auto;">
+                        <button id="touch-subway-left" style="background:rgba(0,242,254,0.2); border:2px solid #00f2fe; color:#00f2fe; border-radius:12px; padding:14px 28px; font-size:1.1rem; font-weight:700; cursor:pointer;">◀ LEFT</button>
+                        <button id="touch-subway-jump" style="background:rgba(168,85,247,0.2); border:2px solid #a855f7; color:#a855f7; border-radius:12px; padding:14px 28px; font-size:1.1rem; font-weight:700; cursor:pointer;">⬆ JUMP</button>
+                        <button id="touch-subway-slide" style="background:rgba(248,197,0,0.2); border:2px solid #f8c500; color:#f8c500; border-radius:12px; padding:14px 28px; font-size:1.1rem; font-weight:700; cursor:pointer;">⬇ SLIDE</button>
+                        <button id="touch-subway-right" style="background:rgba(0,242,254,0.2); border:2px solid #00f2fe; color:#00f2fe; border-radius:12px; padding:14px 28px; font-size:1.1rem; font-weight:700; cursor:pointer;">RIGHT ▶</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 1: Car Container -->
+            <div class="game-subview" id="game-car-container">
+                <div class="car-arena-wrapper">
+                    <canvas id="car-canvas" width="800" height="600"></canvas>
+                    <div class="car-hud-overlay">
+                        <div class="car-hud-top">
+                            <div class="hud-stat-box">
+                                <span class="label">SCORE</span>
+                                <span class="val" id="car-score-val">00000</span>
+                            </div>
+                            <div class="hud-stat-box">
+                                <span class="label">DISTANCE</span>
+                                <span class="val" id="car-dist-val">0.0 KM</span>
+                            </div>
+                            <div class="hud-stat-box">
+                                <span class="label">COINS</span>
+                                <span class="val" id="car-coins-val">🪙 0</span>
+                            </div>
+                        </div>
+
+                        <div class="car-hud-bottom">
+                            <div class="speedo-container">
+                                <div class="speedo-dial">
+                                    <span class="speed-num" id="car-speed-num">0</span>
+                                    <span class="speed-unit">KM/H</span>
+                                </div>
+                            </div>
+                            <div class="nitro-gauge-wrap">
+                                <span class="nitro-label">⚡ NITRO BOOST</span>
+                                <div class="nitro-bar-track">
+                                    <div class="nitro-bar-fill" id="car-nitro-bar" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="car-touch-controls" id="car-touch-ctrls">
+                            <button class="btn-touch btn-steer-left" id="touch-car-left">◀ LEFT</button>
+                            <button class="btn-touch btn-steer-nitro" id="touch-car-nitro">⚡ NITRO</button>
+                            <button class="btn-touch btn-steer-right" id="touch-car-right">RIGHT ▶</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 2: Tic Tac Toe Container -->
+            <div class="game-subview" id="game-tictactoe-container">
+                <div class="ttt-arena-wrapper">
+                    <div class="ttt-scoreboard">
+                        <div class="player-card player-x active" id="ttt-card-p1">
+                            <div class="p-avatar">❌</div>
+                            <div class="p-details">
+                                <div class="p-name" id="ttt-p1-name">Player X</div>
+                                <div class="p-score" id="ttt-p1-score">0 Wins</div>
+                            </div>
+                        </div>
+                        <div class="ttt-vs-badge">VS</div>
+                        <div class="player-card player-o" id="ttt-card-p2">
+                            <div class="p-avatar">⭕</div>
+                            <div class="p-details">
+                                <div class="p-name" id="ttt-p2-name">AI (Hard)</div>
+                                <div class="p-score" id="ttt-p2-score">0 Wins</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ttt-status-banner" id="ttt-turn-status">Player X's Turn</div>
+
+                    <div class="ttt-board-box">
+                        <div class="ttt-board grid-3x3" id="ttt-grid-board"></div>
+                    </div>
+
+                    <div class="ttt-mode-selectors">
+                        <button class="btn-ttt-size active" data-size="3">3x3 Classic</button>
+                        <button class="btn-ttt-size" data-size="4">4x4 Extreme</button>
+                        <button class="btn-ttt-size" data-size="5">5x5 Master</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 3: Carrom Container -->
+            <div class="game-subview" id="game-carrom-container">
+                <div class="carrom-arena-wrapper">
+                    <div class="carrom-hud">
+                        <div class="carrom-player active" id="carrom-p1-card">
+                            <span class="p-dot white"></span>
+                            <span class="p-title" id="carrom-p1-name">Player 1 (White)</span>
+                            <span class="p-pts" id="carrom-p1-score">0 pts</span>
+                        </div>
+                        <div class="carrom-queen-status" id="carrom-queen-indicator">👑 Queen: On Board</div>
+                        <div class="carrom-player" id="carrom-p2-card">
+                            <span class="p-dot black"></span>
+                            <span class="p-title" id="carrom-p2-name">AI (Black)</span>
+                            <span class="p-pts" id="carrom-p2-score">0 pts</span>
+                        </div>
+                    </div>
+
+                    <div class="carrom-canvas-container">
+                        <canvas id="carrom-canvas" width="600" height="600"></canvas>
+                        <div class="carrom-power-bar-wrap" id="carrom-power-container">
+                            <div class="power-label">POWER</div>
+                            <div class="power-track">
+                                <div class="power-fill" id="carrom-power-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carrom-bottom-controls">
+                        <div class="slider-control">
+                            <label for="carrom-striker-pos">Striker Baseline Position:</label>
+                            <input type="range" id="carrom-striker-pos" min="0" max="100" value="50">
+                        </div>
+                        <button class="btn-strike-action" id="btn-carrom-strike">🔥 RELEASE STRIKER</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 4: Pool Container -->
+            <div class="game-subview" id="game-pool-container">
+                <div class="pool-arena-wrapper">
+                    <div class="pool-hud">
+                        <div class="pool-player active" id="pool-p1-card">
+                            <div class="p-header" id="pool-p1-title">Player 1</div>
+                            <div class="p-suit" id="pool-p1-suit">Suit: Any</div>
+                            <div class="p-balls-left" id="pool-p1-balls">Balls: 7</div>
+                        </div>
+                        <div class="pool-center-info" id="pool-status-msg">Break the Rack!</div>
+                        <div class="pool-player" id="pool-p2-card">
+                            <div class="p-header" id="pool-p2-title">AI (Normal)</div>
+                            <div class="p-suit" id="pool-p2-suit">Suit: Any</div>
+                            <div class="p-balls-left" id="pool-p2-balls">Balls: 7</div>
+                        </div>
+                    </div>
+
+                    <div class="pool-canvas-container">
+                        <canvas id="pool-canvas" width="800" height="440"></canvas>
+                    </div>
+
+                    <div class="pool-controls-bar">
+                        <div class="aim-angle-guide">
+                            <span>Touch & Drag Table to Aim Cue | Adjust Power & Tap Hit</span>
+                        </div>
+                        <div class="pool-shot-slider-wrap">
+                            <span class="power-txt">SHOT POWER:</span>
+                            <input type="range" id="pool-power-slider" min="5" max="100" value="45">
+                            <button class="btn-pool-shoot" id="btn-pool-shoot">🎱 HIT CUE BALL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 5: Ludo Container with Real 3D Pip Dot Dice -->
+            <div class="game-subview" id="game-ludo-container">
+                <div class="ludo-arena-wrapper">
+                    <div class="ludo-canvas-box">
+                        <canvas id="ludo-canvas" width="600" height="600"></canvas>
+                    </div>
+
+                    <div class="ludo-side-panel">
+                        <h3 class="panel-heading">LUDO ARENA</h3>
+                        <div class="ludo-players-list">
+                            <div class="ludo-p-tag red active" id="ludo-p-red">
+                                <span class="dot"></span>
+                                <span class="name">Player 1 (Red)</span>
+                                <span class="status">Turn</span>
+                            </div>
+                            <div class="ludo-p-tag green" id="ludo-p-green">
+                                <span class="dot"></span>
+                                <span class="name">Player 2 (Green)</span>
+                                <span class="status">Waiting</span>
+                            </div>
+                            <div class="ludo-p-tag yellow" id="ludo-p-yellow">
+                                <span class="dot"></span>
+                                <span class="name">Player 3 (Yellow)</span>
+                                <span class="status">Waiting</span>
+                            </div>
+                            <div class="ludo-p-tag blue" id="ludo-p-blue">
+                                <span class="dot"></span>
+                                <span class="name">Player 4 (Blue)</span>
+                                <span class="status">Waiting</span>
+                            </div>
+                        </div>
+
+                        <div class="ludo-dice-container">
+                            <div class="dice-3d-scene" id="ludo-dice-box">
+                                <div class="dice-cube" id="dice-cube-element">
+                                    <div class="dice-face face-1"><span class="pip pip-center pip-red"></span></div>
+                                    <div class="dice-face face-2"><span class="pip pip-top-left"></span><span
+                                            class="pip pip-bottom-right"></span></div>
+                                    <div class="dice-face face-3"><span class="pip pip-top-left"></span><span
+                                            class="pip pip-center"></span><span class="pip pip-bottom-right"></span>
+                                    </div>
+                                    <div class="dice-face face-4"><span class="pip pip-top-left"></span><span
+                                            class="pip pip-top-right"></span><span
+                                            class="pip pip-bottom-left"></span><span
+                                            class="pip pip-bottom-right"></span></div>
+                                    <div class="dice-face face-5"><span class="pip pip-top-left"></span><span
+                                            class="pip pip-top-right"></span><span class="pip pip-center"></span><span
+                                            class="pip pip-bottom-left"></span><span
+                                            class="pip pip-bottom-right"></span></div>
+                                    <div class="dice-face face-6"><span class="pip pip-top-left"></span><span
+                                            class="pip pip-mid-left"></span><span
+                                            class="pip pip-bottom-left"></span><span
+                                            class="pip pip-top-right"></span><span
+                                            class="pip pip-mid-right"></span><span class="pip pip-bottom-right"></span>
+                                    </div>
+                                </div>
+                                <div class="dice-shadow"></div>
+                            </div>
+                            <button class="btn-roll-dice" id="btn-ludo-roll">🎲 TAP TO ROLL DICE</button>
+                        </div>
+
+                        <div class="ludo-token-selector-bar" id="ludo-token-bar"></div>
+                        <div class="ludo-action-msg" id="ludo-info-msg">Roll the dice to start!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 6: Chess Container -->
+            <div class="game-subview" id="game-chess-container">
+                <div class="chess-arena-wrapper">
+                    <div class="chess-sidebar">
+                        <div class="chess-opponent-card" id="chess-opp-card">
+                            <div class="p-info">
+                                <span class="avatar">🤖</span>
+                                <span class="name" id="chess-opp-name">AI (Black)</span>
+                            </div>
+                            <div class="chess-clock" id="chess-opp-clock">10:00</div>
+                        </div>
+
+                        <div class="chess-graveyard" id="chess-black-graveyard"></div>
+
+                        <div class="chess-move-history-box">
+                            <div class="history-title">MOVE NOTATION</div>
+                            <div class="history-list" id="chess-move-history"></div>
+                        </div>
+
+                        <div class="chess-graveyard" id="chess-white-graveyard"></div>
+
+                        <div class="chess-player-card" id="chess-player-card">
+                            <div class="p-info">
+                                <span class="avatar">👑</span>
+                                <span class="name" id="chess-player-name">Player 1 (White)</span>
+                            </div>
+                            <div class="chess-clock" id="chess-player-clock">10:00</div>
+                        </div>
+                    </div>
+
+                    <div class="chess-board-area">
+                        <div class="chess-status-ticker" id="chess-status-text">White to move. Good luck!</div>
+                        <div class="chessboard-container">
+                            <div id="chessboard" class="chessboard luxury-theme"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 7: Fruit Ninja Container -->
+            <div class="game-subview" id="game-fruitninja-container">
+                <div class="ninja-arena-wrapper">
+                    <canvas id="ninja-canvas" width="800" height="500"></canvas>
+                    <div class="ninja-hud-overlay">
+                        <div class="ninja-hud-top">
+                            <div class="ninja-score-card">
+                                <span class="icon">🍉</span>
+                                <span class="val" id="ninja-score-val">0</span>
+                            </div>
+                            <div class="ninja-combo-banner" id="ninja-combo-text">🔥 3X COMBO!</div>
+                            <div class="ninja-lives-card">
+                                <span class="strike-cross">❌</span>
+                                <span class="strike-cross">❌</span>
+                                <span class="strike-cross">❌</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================== -->
+    <!-- UNIVERSAL GAME SETUP MODAL (Game Mode, AI, Online)      -->
+    <!-- ======================================================== -->
+    <div class="modal-backdrop" id="game-setup-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-game-icon" id="setup-modal-icon">🎮</div>
+                <div class="modal-heading-text">
+                    <h2 class="modal-title" id="setup-modal-title">Launch Game</h2>
+                    <p class="modal-subtitle">Configure Game Mode & AI Difficulty</p>
+                </div>
+                <button class="modal-close-btn" id="btn-close-setup-modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- STEP 1: Select Opponent Mode -->
+                <div class="setup-group">
+                    <label class="group-label">1. SELECT GAME MODE</label>
+                    <div class="mode-options-grid">
+                        <div class="mode-card active" data-mode="ai">
+                            <div class="mode-icon">🤖</div>
+                            <div class="mode-info">
+                                <div class="mode-title">VS Computer (AI)</div>
+                                <div class="mode-desc">Play solo with smart bots</div>
+                            </div>
+                        </div>
+                        <div class="mode-card" data-mode="local">
+                            <div class="mode-icon">👥</div>
+                            <div class="mode-info">
+                                <div class="mode-title">VS Local Friend</div>
+                                <div class="mode-desc">Pass & play on same screen</div>
+                            </div>
+                        </div>
+                        <div class="mode-card" data-mode="online">
+                            <div class="mode-icon">🌐</div>
+                            <div class="mode-info">
+                                <div class="mode-title">Online Multiplayer</div>
+                                <div class="mode-desc">Room code or matchmaking</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Difficulty Selection (When AI selected) -->
+                <div class="setup-group" id="difficulty-group">
+                    <label class="group-label">2. SELECT DIFFICULTY</label>
+                    <div class="difficulty-grid">
+                        <div class="diff-btn" data-diff="easy">
+                            <span class="badge">🟢</span>
+                            <span class="diff-title">Easy</span>
+                            <span class="diff-desc">Casual & relaxed AI</span>
+                        </div>
+                        <div class="diff-btn active" data-diff="normal">
+                            <span class="badge">🟡</span>
+                            <span class="diff-title">Normal</span>
+                            <span class="diff-desc">Balanced competitive AI</span>
+                        </div>
+                        <div class="diff-btn" data-diff="hard">
+                            <span class="badge">🔴</span>
+                            <span class="diff-title">Hard (Master)</span>
+                            <span class="diff-desc">Unforgiving Grandmaster AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2-B: Online Multiplayer Lobby (When Online selected) -->
+                <div class="setup-group hidden" id="online-setup-group">
+                    <label class="group-label">2. ONLINE ROOM SETUP</label>
+                    <div class="online-box">
+                        <div class="online-tabs">
+                            <button class="btn-online-tab active" id="tab-quick-match">⚡ Quick Match</button>
+                            <button class="btn-online-tab" id="tab-custom-room">🔑 Custom Room Code</button>
+                        </div>
+                        <div class="online-tab-content" id="quick-match-content">
+                            <p class="online-desc">Instantly match with live online players in the global Venom arena.
+                            </p>
+                            <div class="matchmaking-status" id="matchmaking-status-box">
+                                <div class="radar-spinner"></div>
+                                <span id="matchmaking-status-txt">Ready to find rival...</span>
+                            </div>
+                        </div>
+                        <div class="online-tab-content hidden" id="custom-room-content">
+                            <div class="room-code-inputs">
+                                <input type="text" id="input-room-code" placeholder="ENTER 6-DIGIT ROOM CODE"
+                                    maxlength="6">
+                                <div class="room-btns">
+                                    <button class="btn-secondary" id="btn-create-room">Create New Room</button>
+                                    <button class="btn-primary" id="btn-join-room">Join Room</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extra Custom Options (Game Specific) -->
+                <div class="setup-group" id="extra-options-group"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-cancel" id="btn-cancel-setup">CANCEL</button>
+                <button class="btn-start-game" id="btn-confirm-start">
+                    <span>LAUNCH GAME</span> <span class="glow-arrow">⚡</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arcade Settings Modal -->
+    <div class="modal-backdrop" id="arcade-settings-modal">
+        <div class="modal-card modal-small">
+            <div class="modal-header">
+                <div class="modal-game-icon">⚙️</div>
+                <div class="modal-heading-text">
+                    <h2 class="modal-title">Settings & Audio</h2>
+                    <p class="modal-subtitle">Audio, Visual Quality & Preferences</p>
+                </div>
+                <button class="modal-close-btn" id="btn-close-settings-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <span class="setting-name">Master Volume:</span>
+                    <input type="range" id="volume-master-slider" min="0" max="100" value="80">
+                </div>
+                <div class="setting-item">
+                    <span class="setting-name">Sound FX (SFX):</span>
+                    <label class="switch">
+                        <input type="checkbox" id="setting-sfx-toggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-name">Cyberpunk BGM Music:</span>
+                    <label class="switch">
+                        <input type="checkbox" id="setting-bgm-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-name">Ultra 4K Visual Effects:</span>
+                    <label class="switch">
+                        <input type="checkbox" id="setting-4k-toggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-start-game" id="btn-save-settings">SAVE & CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Victory / Game Over Overlay Modal -->
+    <div class="modal-backdrop" id="gameover-modal">
+        <div class="modal-card modal-gameover">
+            <div class="confetti-emitter" id="confetti-anchor"></div>
+            <div class="gameover-icon" id="gameover-trophy">🏆</div>
+            <h2 class="gameover-title" id="gameover-title">VICTORY!</h2>
+            <p class="gameover-desc" id="gameover-msg">You conquered the match with style!</p>
+            <div class="gameover-rewards">
+                <div class="reward-pill">+<span id="gameover-xp">250</span> XP</div>
+                <div class="reward-pill">+<span id="gameover-coins">100</span> 🪙 Coins</div>
+            </div>
+            <div class="gameover-actions">
+                <button class="btn-secondary" id="btn-gameover-replay">🔄 PLAY AGAIN</button>
+                <button class="btn-primary" id="btn-gameover-hub">🏠 ARCADE HUB</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (Audio, Particles, Online, Games, and Main Hub) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(() => { });
+            });
+        }
+    </script>
+    <script src="js/audio.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/online.js"></script>
+    <script src="js/games/subway.js"></script>
+    <script src="js/games/car.js"></script>
+    <script src="js/games/tictactoe.js"></script>
+    <script src="js/games/carrom.js"></script>
+    <script src="js/games/pool.js"></script>
+    <script src="js/games/ludo.js"></script>
+    <script src="js/games/chess.js"></script>
+    <script src="js/games/fruit-ninja.js"></script>
+    <script src="js/hub.js"></script>
+</body>
+
+</html>

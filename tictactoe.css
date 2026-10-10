@@ -1,0 +1,205 @@
+/* ========================================================= */
+/* NEON TIC TAC TOE STYLES                                   */
+/* ========================================================= */
+
+.ttt-arena-wrapper {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.ttt-scoreboard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.ttt-scoreboard .player-card {
+    flex: 1;
+    background: var(--bg-surface-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition-snappy);
+}
+
+.ttt-scoreboard .player-card.active {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+    background: rgba(0, 242, 254, 0.08);
+}
+
+.ttt-scoreboard .player-card.player-o.active {
+    border-color: var(--neon-magenta);
+    box-shadow: 0 0 20px rgba(248, 87, 166, 0.35);
+    background: rgba(248, 87, 166, 0.08);
+}
+
+.p-avatar {
+    font-size: 1.8rem;
+}
+
+.p-name {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-pure);
+}
+
+.p-score {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--gold-primary);
+}
+
+.ttt-vs-badge {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.ttt-status-banner {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--neon-cyan);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    padding: 10px 24px;
+    border-radius: 30px;
+}
+
+/* Board Box */
+.ttt-board-box {
+    background: #090e1f;
+    border: 2px solid rgba(0, 242, 254, 0.4);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 242, 254, 0.1);
+}
+
+.ttt-board {
+    display: grid;
+    gap: 12px;
+}
+
+.ttt-board.grid-3x3 {
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: repeat(3, 110px);
+}
+
+.ttt-board.grid-4x4 {
+    grid-template-columns: repeat(4, 85px);
+    grid-template-rows: repeat(4, 85px);
+}
+
+.ttt-board.grid-5x5 {
+    grid-template-columns: repeat(5, 70px);
+    grid-template-rows: repeat(5, 70px);
+}
+
+.ttt-cell {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+    position: relative;
+    overflow: hidden;
+}
+
+.ttt-board.grid-4x4 .ttt-cell {
+    font-size: 2.2rem;
+}
+
+.ttt-board.grid-5x5 .ttt-cell {
+    font-size: 1.8rem;
+}
+
+.ttt-cell:hover:empty {
+    background: rgba(0, 242, 254, 0.12);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.ttt-cell.x {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px rgba(0, 242, 254, 0.8);
+    animation: popX 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ttt-cell.o {
+    color: var(--neon-magenta);
+    text-shadow: 0 0 20px rgba(248, 87, 166, 0.8);
+    animation: popO 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ttt-cell.winning-cell {
+    background: rgba(255, 215, 0, 0.25);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    animation: winPulse 1s infinite alternate;
+}
+
+@keyframes popX {
+    from { transform: scale(0.3) rotate(-30deg); opacity: 0; }
+    to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes popO {
+    from { transform: scale(0.3); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes winPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.ttt-mode-selectors {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-ttt-size {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+}
+
+.btn-ttt-size.active {
+    background: var(--neon-cyan);
+    color: #000;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+@media (max-width: 500px) {
+    .ttt-board.grid-3x3 {
+        grid-template-columns: repeat(3, 85px);
+        grid-template-rows: repeat(3, 85px);
+    }
+}

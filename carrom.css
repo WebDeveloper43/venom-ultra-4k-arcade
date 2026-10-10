@@ -1,0 +1,216 @@
+/* ========================================================= */
+/* CARROM BOARD MASTER STYLES - MOBILE & PC READY            */
+/* ========================================================= */
+
+.carrom-arena-wrapper {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.carrom-hud {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-surface-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 10px 18px;
+}
+
+.carrom-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.6;
+    transition: var(--transition-snappy);
+}
+
+.carrom-player.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.p-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.p-dot.white {
+    background: #f0f0f0;
+    box-shadow: 0 0 10px #fff;
+}
+
+.p-dot.black {
+    background: #222;
+    border-color: #888;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+.carrom-player .p-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-pure);
+}
+
+.carrom-player .p-pts {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--gold-primary);
+}
+
+.carrom-queen-status {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--neon-red);
+    font-weight: 700;
+    background: rgba(255, 51, 102, 0.1);
+    border: 1px solid rgba(255, 51, 102, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.carrom-canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    background: #1e110a;
+    border-radius: 24px;
+    border: 4px solid #4a2818;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 126, 64, 0.2);
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+#carrom-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    cursor: crosshair;
+    touch-action: manipulation;
+}
+
+/* Power Bar Indicator Overlay */
+.carrom-power-bar-wrap {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+}
+
+.power-label {
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    color: var(--gold-primary);
+    font-weight: 800;
+}
+
+.power-track {
+    width: 14px;
+    height: 130px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.power-fill {
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(0deg, var(--neon-green), var(--neon-yellow), var(--neon-red));
+    border-radius: 10px;
+    transition: height 0.05s linear;
+}
+
+/* Bottom Controls */
+.carrom-bottom-controls {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--bg-surface-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 12px 18px;
+}
+
+.slider-control {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.slider-control label {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.slider-control input[type="range"] {
+    width: 100%;
+    accent-color: var(--neon-cyan);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.btn-strike-action {
+    background: linear-gradient(135deg, var(--neon-orange), var(--neon-red));
+    border: none;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 126, 64, 0.4);
+    transition: var(--transition-snappy);
+    white-space: nowrap;
+    touch-action: manipulation;
+}
+
+.btn-strike-action:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(255, 126, 64, 0.7);
+}
+
+@media (max-width: 600px) {
+    .carrom-hud {
+        padding: 8px 12px;
+    }
+    .carrom-player .p-title {
+        font-size: 0.8rem;
+    }
+    .carrom-bottom-controls {
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px 14px;
+    }
+    .btn-strike-action {
+        width: 100%;
+        padding: 12px;
+    }
+}
